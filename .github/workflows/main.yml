@@ -1,4 +1,4 @@
-name: Prueba Python
+name: Prueba Telegram
 
 on:
   workflow_dispatch:
@@ -16,5 +16,10 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Ejecutar prueba
+      - name: Instalar requests
+        run: pip install requests
+
+      - name: Probar Telegram
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
         run: python bot.py
